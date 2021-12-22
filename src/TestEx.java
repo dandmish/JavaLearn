@@ -4,7 +4,7 @@ public class TestEx {
 
     public void Test1() {
 
-        Integer rep_characters = 0;
+        int rep_characters = 0;
 
 
         Scanner in = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class TestEx {
 
     public char Test2() {
 
-        Integer i = 0;
+        int i = 0;
 
         Scanner in = new Scanner(System.in);
         System.out.print("Введите строку: ");
@@ -104,5 +104,81 @@ public class TestEx {
             System.out.println("Количество вхождений символа " + array_symbols[i] + ":" +  number_occurrences);
         }
         return number_occurrences;
+    }
+    public boolean Palindrom(){
+        boolean palindrom = false;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String str1 = in.next();
+        char[] strArray = str1.toCharArray();
+        if(str1.length()%2 == 0){
+            for(int i = 0; i < strArray.length/2-1; i++){
+                if(strArray[i] != strArray[strArray.length-i-1]){
+                    return false;
+                }else{
+                    palindrom = true;
+                }
+            }
+        }else{
+            for(int i = 0; i < (strArray.length-1)/2-1; i++){
+                if(strArray[i] != strArray[strArray.length-i-1]){
+                    return false;
+                }else{
+                    palindrom = true;
+                }
+            }
+        }
+        return palindrom;
+    }
+    public String removeRepeatSymbols(){
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String str1 = in.next();
+        String resString="" + str1.charAt(0);
+        for (int i = 1; i < str1.length(); i++) {
+            if (str1.charAt(i - 1) == str1.charAt(i)) {
+                continue;
+            }
+            resString = resString + str1.charAt(i);
+        }
+        System.out.print(resString);
+        return resString;
+    }
+    public String removeGivenSymbol(){
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String str = in.next();
+        System.out.print("Введите символ для поиска: ");
+        String symbol = in.next();
+        str = str.replaceAll(symbol, "");
+        System.out.print(str);
+        return str;
+    }
+    public char searchMostFrequentSymbol (){
+        Integer max_occurrences = 1;
+        int number_of_occurrences = 1;
+        char most_frequent_character;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Введите строку: ");
+        String str = in.next();
+        char[] SymbolsArray = str.toCharArray();
+        most_frequent_character = SymbolsArray[0];
+        for (int i = 0; i < SymbolsArray.length - 1; i++){
+            if (SymbolsArray[i] == SymbolsArray[i+1]){
+                number_of_occurrences += 1;
+            }else{
+                number_of_occurrences = 1;
+            }
+            if(number_of_occurrences > max_occurrences){
+                max_occurrences = number_of_occurrences;
+                most_frequent_character = SymbolsArray[i];
+            }
+
+        }
+        System.out.println(max_occurrences);
+        System.out.print(most_frequent_character);
+        return most_frequent_character;
     }
 }
