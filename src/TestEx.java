@@ -1,20 +1,19 @@
+import com.sun.source.tree.NewArrayTree;
+
 import java.util.Scanner;
 
 public class TestEx {
+    private Scanner in = new Scanner(System.in);
 
-    public void Test1() {
+    public void numberOfRepeatSymbols() {
 
         int rep_characters = 0;
-
-
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        int StrLen = str1.length();
-        char[] array_characters = new char[StrLen];
-        char[] NewArray = str1.toCharArray();
-        for (int i = 0; i < StrLen; i++){
-            for(int j = i + 1; j < StrLen; j++){
+        String entered_string = getString("Введите строку: ");
+        int strLen = entered_string.length();
+        char[] array_characters = new char[strLen];
+        char[] NewArray = entered_string.toCharArray();
+        for (int i = 0; i < strLen; i++){
+            for(int j = i + 1; j < strLen; j++){
                 if(NewArray[i] == NewArray[j]){
                     array_characters[rep_characters] = NewArray[i];
                     rep_characters++;
@@ -30,70 +29,70 @@ public class TestEx {
         System.out.println("Количество повторяющихся символов: " + rep_characters);
     }
 
-    public char Test2() {
+    public String firstNonRecurringSymbol() {
 
-        int i = 0;
+        String firstNonRecurringSymbol = "";
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        int StrLen = str1.length();
-        char[] NewArray = str1.toCharArray();
-            for (int j = i + 1; j < StrLen; j++) {
-                if (NewArray[i] != NewArray[j]) {
-                    System.out.print(NewArray[i]);
-                    return NewArray[i];
+        String entered_string = getString("Введите строку: ");
+        int strLen = entered_string.length();
+        for (int i = 0; i < entered_string.length(); i++) {
+            boolean unique = true;
+            for (int j = 0; j < entered_string.length(); j++) {
+                if (i != j && entered_string.charAt(i) == entered_string.charAt(j)) {
+                    unique = false;
+                    break;
                 }
             }
-        return 'i';
+            if (unique) {
+                firstNonRecurringSymbol ="" + entered_string.charAt(i);
+                System.out.print(firstNonRecurringSymbol);
+                break;
+            }else {
+                firstNonRecurringSymbol = "Все символы повторяются";
+            }
+        }
+        return firstNonRecurringSymbol;
     }
-    public String Test3() {
+    public String invertedWord() {
 
         String result;
         int j = 0;
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        int StrLen = str1.length();
-        char[] inverted_array = new char[StrLen];
-        char[] NewArray = str1.toCharArray();
-        for (int i = StrLen - 1; i >= 0; i--) {
-            inverted_array[j] = NewArray[i];
+        String entered_string = getString("Введите строку: ");
+        int strLen = entered_string.length();
+        char[] inverted_array = new char[strLen];
+        char[] newArray = entered_string.toCharArray();
+        for (int i = strLen - 1; i >= 0; i--) {
+            inverted_array[j] = newArray[i];
             System.out.print(inverted_array[j]);
             j++;
         }
         result = new String(inverted_array);
         return result;
     }
-    public boolean Test4() {
+    public boolean onlyNumbers() {
 
         boolean result = false;
         int j = 0;
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        if (str1.matches("[0-9]+")){
+        String entered_string = getString("Введите строку: ");
+        if (entered_string.matches("[0-9]+")){
             result = true;
             System.out.print(result);
         }
 
         return result;
     }
-    public Integer Test6() {
+    public Integer numberOfOccurencesSymbol() {
 
         int number_occurrences = 0;
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        System.out.print("Введите символы для поиска: ");
-        String symbols = in.next();
-        char[] array_str = str1.toCharArray();
-        char[] array_symbols = symbols.toCharArray();
-        int StrLen = str1.length();
-        int SymbolsLen = symbols.length();
+        String entered_string = getString("Введите строку: ");
+        String entered_symbols = getString("Введите символы для поиска: ");
+        char[] array_str = entered_string.toCharArray();
+        char[] array_symbols = entered_symbols.toCharArray();
+        int StrLen = entered_string.length();
+        int SymbolsLen = entered_symbols.length();
         for (int i = 0; i < SymbolsLen; i++){
             number_occurrences = 0;
             for(int j = 0; j < StrLen; j++){
@@ -107,11 +106,9 @@ public class TestEx {
     }
     public boolean Palindrom(){
         boolean palindrom = false;
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        char[] strArray = str1.toCharArray();
-        if(str1.length()%2 == 0){
+        String entered_string = getString("Введите строку: ");
+        char[] strArray = entered_string.toCharArray();
+        if(entered_string.length()%2 == 0){
             for(int i = 0; i < strArray.length/2-1; i++){
                 if(strArray[i] != strArray[strArray.length-i-1]){
                     return false;
@@ -132,38 +129,31 @@ public class TestEx {
     }
     public String removeRepeatSymbols(){
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str1 = in.next();
-        String resString="" + str1.charAt(0);
-        for (int i = 1; i < str1.length(); i++) {
-            if (str1.charAt(i - 1) == str1.charAt(i)) {
+        String entered_string = getString("Введите строку: ");
+        String resString="" + entered_string.charAt(0);
+        for (int i = 1; i < entered_string.length(); i++) {
+            if (entered_string.charAt(i - 1) == entered_string.charAt(i)) {
                 continue;
             }
-            resString = resString + str1.charAt(i);
+            resString = resString + entered_string.charAt(i);
         }
         System.out.print(resString);
         return resString;
     }
     public String removeGivenSymbol(){
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str = in.next();
-        System.out.print("Введите символ для поиска: ");
-        String symbol = in.next();
-        str = str.replaceAll(symbol, "");
-        System.out.print(str);
-        return str;
+        String entered_string = getString("Введите строку: ");
+        String entered_symbol = getString("Введите символ для поиска: ");
+        entered_string = entered_string.replaceAll(entered_symbol, "");
+        System.out.print(entered_string);
+        return entered_string;
     }
     public char searchMostFrequentSymbol (){
         Integer max_occurrences = 1;
         int number_of_occurrences = 1;
         char most_frequent_character;
-        Scanner in = new Scanner(System.in);
-        System.out.print("Введите строку: ");
-        String str = in.next();
-        char[] SymbolsArray = str.toCharArray();
+        String entered_string = getString("Введите строку: ");
+        char[] SymbolsArray = entered_string.toCharArray();
         most_frequent_character = SymbolsArray[0];
         for (int i = 0; i < SymbolsArray.length - 1; i++){
             if (SymbolsArray[i] == SymbolsArray[i+1]){
@@ -180,5 +170,10 @@ public class TestEx {
         System.out.println(max_occurrences);
         System.out.print(most_frequent_character);
         return most_frequent_character;
+    }
+    public String getString(String desired_string){
+        System.out.print(desired_string);
+        String entered_string = in.next();
+        return entered_string;
     }
 }

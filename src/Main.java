@@ -1,20 +1,20 @@
 public class Main {
     public static void main(String[] args) {
-        char resTest2;
-        String resTest3;
-        boolean resTest4;
-        Integer resTest6;
+        String firstNonRecurringSymbol;
+        String invertedWord;
+        boolean onlyNumbers;
+        Integer number_occurences_symbol;
         boolean resPalindrom;
         String resString;
         String StringWithRemovedSymbol;
         char most_frequent_character;
 
         TestEx test = new TestEx();
-        //test.Test1();
-        //resTest2 = test.Test2();
-        //resTest3 = test.Test3();
-        //resTest4 = test.Test4();
-        //resTest6 = test.Test6();
+        //test.numberOfRepeatSymbols();
+        firstNonRecurringSymbol = test.firstNonRecurringSymbol();
+        //invertedWord = test.invertedWord();
+        //onlyNumbers = test.onlyNumbers();
+        //number_occurences_symbol = test.numberOfOccurencesSymbol();
         //resPalindrom = test.Palindrom();
         //resString = test.removeRepeatSymbols();
         //StringWithRemovedSymbol = test.removeGivenSymbol();
