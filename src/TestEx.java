@@ -1,6 +1,9 @@
 import com.sun.source.tree.NewArrayTree;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class TestEx {
     private Scanner in = new Scanner(System.in);
@@ -171,9 +174,59 @@ public class TestEx {
         System.out.print(most_frequent_character);
         return most_frequent_character;
     }
+
+    public void bubble_sort(){
+        int [] mas = {6,5,3,4,1,2};
+
+        boolean Sorted = false;
+        int intermediate_variable;
+        while(!Sorted) {
+            Sorted = true;
+            for (int i = 0; i < mas.length-1; i++) {
+                if(mas[i] > mas[i+1]){
+                    Sorted = false;
+
+                    intermediate_variable = mas[i];
+                    mas[i] = mas[i+1];
+                    mas[i+1] = intermediate_variable;
+                }
+            }
+        }
+        for(int i = 0; i < mas.length-1; i++){
+            System.out.print(mas[i]);
+        }
+    }
+
+    public LocalDate convert_String_to_Date(){
+        String date = getString("Введите дату: ");
+        LocalDate localDate = LocalDate.parse(date);
+        System.out.println(localDate);
+        return localDate;
+    }
+
+    public Date formatDate(){
+        return date_formatting("dd.MM.yyyy");
+    }
+
+    public Date currentTime(){
+        return date_formatting("hh:mm");
+    }
+    public Date currentDate(){
+        return date_formatting("dd.MM.yyyy");
+    }
+    public Date date_formatting(String date_format){
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = null;
+
+        dateFormat = new SimpleDateFormat(date_format);
+        System.out.println(dateFormat.format(currentDate));
+        return currentDate;
+    }
+
     public String getString(String desired_string){
         System.out.print(desired_string);
         String entered_string = in.next();
         return entered_string;
     }
+
 }
